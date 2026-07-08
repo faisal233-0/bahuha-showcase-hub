@@ -1,297 +1,287 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ArrowUpRight, Github, Linkedin, Mail, Sparkles, Code2, Palette, Rocket } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const projects = [
-  {
-    n: "01",
-    title: "Ledger.io",
-    tag: "Web App / Fintech",
-    year: "2026",
-    color: "bg-[var(--bauhaus-red)] text-primary-foreground",
-    desc: "A minimal double-entry bookkeeping tool for freelancers. Built with TypeScript, Postgres, and a lot of coffee.",
-  },
-  {
-    n: "02",
-    title: "Studio Kova",
-    tag: "Marketing Site",
-    year: "2026",
-    color: "bg-[var(--bauhaus-blue)] text-primary-foreground",
-    desc: "Editorial one-pager for a Berlin architecture studio. Custom CMS, 98 Lighthouse score, ships in 3 weeks.",
-  },
-  {
-    n: "03",
-    title: "Pulse Meter",
-    tag: "IoT Dashboard",
-    year: "2025",
-    color: "bg-[var(--bauhaus-yellow)] text-foreground",
-    desc: "Realtime dashboard for a lab of 40 pulse sensors. Uni capstone. Grade: 1.0.",
-  },
-  {
-    n: "04",
-    title: "Formkit",
-    tag: "Open Source",
-    year: "2025",
-    color: "bg-foreground text-background",
-    desc: "A tiny React form primitives library. 1.2k stars, 40k weekly downloads.",
-  },
-];
-
-const services = [
-  { k: "Web", v: "Landing pages, marketing sites, custom CMS integrations." },
-  { k: "App", v: "Full-stack React + TypeScript apps. Auth, payments, dashboards." },
-  { k: "Design", v: "UI systems, wireframes, brand-aligned interfaces." },
-];
-
 function Index() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <main className="relative min-h-screen overflow-hidden text-foreground">
+      {/* Bauhaus geometric floating shapes behind glass */}
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute -top-20 left-1/4 h-72 w-72 rounded-full bg-[var(--bauhaus-red)] opacity-70 blur-[2px]" />
+        <div className="absolute top-40 right-10 h-56 w-56 bg-[var(--bauhaus-blue)] opacity-80" />
+        <div className="absolute top-[55%] left-[5%] h-40 w-40 rotate-45 bg-[var(--bauhaus-yellow)] opacity-70" />
+        <div className="absolute bottom-20 right-1/3 h-64 w-64 rounded-full bg-[var(--bauhaus-blue)] opacity-60" />
+        <div className="absolute bottom-10 left-1/2 h-48 w-48 bg-[var(--bauhaus-red)] opacity-50" />
+      </div>
+
       {/* NAV */}
-      <header className="sticky top-0 z-50 border-b-2 border-foreground bg-background">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-8">
-          <a href="#top" className="flex items-center gap-3">
-            <span className="relative block h-8 w-8">
-              <span className="absolute inset-0 bg-[var(--bauhaus-red)]" />
-              <span className="absolute right-0 top-0 h-8 w-4 bg-[var(--bauhaus-blue)]" />
-              <span className="absolute bottom-0 left-0 h-4 w-4 bg-[var(--bauhaus-yellow)]" />
+      <header className="sticky top-4 z-50 mx-auto max-w-6xl px-4">
+        <div className="glass flex items-center justify-between rounded-full px-4 py-3 sm:px-6">
+          <a href="#top" className="flex items-center gap-2">
+            <span className="relative block h-7 w-7">
+              <span className="absolute inset-0 rounded-full bg-[var(--bauhaus-red)]" />
+              <span className="absolute right-0 top-0 h-7 w-3.5 rounded-r-full bg-[var(--bauhaus-blue)]" />
+              <span className="absolute bottom-0 left-0 h-3 w-3 bg-[var(--bauhaus-yellow)]" />
             </span>
-            <span className="font-display text-lg">MILO/REYES</span>
+            <span className="font-display text-sm tracking-tight">MILO/REYES</span>
           </a>
-          <nav className="hidden gap-8 text-xs font-bold uppercase tracking-widest md:flex">
-            <a href="#work" className="hover:text-primary">Work</a>
-            <a href="#about" className="hover:text-primary">About</a>
-            <a href="#services" className="hover:text-primary">Services</a>
-            <a href="#contact" className="hover:text-primary">Contact</a>
+          <nav className="hidden gap-6 text-xs font-medium uppercase tracking-widest text-muted-foreground md:flex">
+            <a href="#work" className="hover:text-foreground">Work</a>
+            <a href="#about" className="hover:text-foreground">About</a>
+            <a href="#stack" className="hover:text-foreground">Stack</a>
+            <a href="#contact" className="hover:text-foreground">Contact</a>
           </nav>
           <a
             href="#contact"
-            className="bg-foreground px-4 py-2 text-xs font-bold uppercase tracking-widest text-background hard-shadow-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
+            className="rounded-full bg-foreground px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-background hover:opacity-90"
           >
             Hire me
           </a>
         </div>
       </header>
 
-      {/* HERO */}
-      <section id="top" className="relative overflow-hidden border-b-2 border-foreground">
-        <div className="grid-bauhaus absolute inset-0" />
-        {/* Geometric decorations */}
-        <div className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-[var(--bauhaus-red)]" />
-        <div className="pointer-events-none absolute right-40 top-32 hidden h-40 w-40 bg-[var(--bauhaus-blue)] md:block" />
-        <div className="pointer-events-none absolute bottom-10 right-10 hidden h-24 w-24 rotate-45 bg-[var(--bauhaus-yellow)] md:block" />
-
-        <div className="relative mx-auto max-w-7xl px-4 pb-24 pt-16 sm:px-8 sm:pt-24 md:pb-40 md:pt-32">
-          <div className="mb-8 flex items-center gap-4 font-mono text-xs uppercase tracking-widest">
-            <span className="h-px w-12 bg-foreground" />
-            <span>Portfolio / 2026 / Berlin</span>
-          </div>
-          <h1 className="max-w-5xl text-6xl uppercase leading-[0.85] sm:text-8xl md:text-[11rem]">
-            Build.
-            <br />
-            <span className="text-[var(--bauhaus-red)]">Ship.</span>{" "}
-            <span className="text-[var(--bauhaus-blue)]">Repeat.</span>
-          </h1>
-          <div className="mt-10 grid gap-8 md:grid-cols-3">
-            <p className="max-w-md text-lg leading-relaxed md:col-span-2">
-              I'm <strong>Milo Reyes</strong> — a computer science student at TU Berlin and freelance developer.
-              I design and code interfaces that are honest, fast, and built to last.
-            </p>
-            <div className="flex flex-col justify-end gap-3">
-              <a
-                href="#work"
-                className="inline-flex items-center justify-between bg-foreground px-5 py-4 text-sm font-bold uppercase tracking-widest text-background hard-shadow hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-all"
-              >
-                View work <span>→</span>
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-between border-2 border-foreground bg-[var(--bauhaus-yellow)] px-5 py-4 text-sm font-bold uppercase tracking-widest hard-shadow hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none transition-all"
-              >
-                Start a project <span>→</span>
-              </a>
+      {/* BENTO GRID */}
+      <section id="top" className="mx-auto max-w-6xl px-4 pb-12 pt-8 sm:pt-12">
+        <div className="grid auto-rows-[minmax(140px,auto)] grid-cols-6 gap-4">
+          {/* HERO — spans wide */}
+          <div className="glass-strong relative col-span-6 row-span-2 overflow-hidden rounded-3xl p-8 md:col-span-4 md:p-12">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-[var(--bauhaus-red)] opacity-90" />
+            <div className="pointer-events-none absolute right-10 bottom-6 h-16 w-16 rotate-45 bg-[var(--bauhaus-yellow)]" />
+            <div className="relative">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 font-mono text-[10px] uppercase tracking-widest">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-[var(--bauhaus-yellow)]" />
+                Available for Q3 2026
+              </div>
+              <h1 className="text-5xl uppercase leading-[0.9] sm:text-6xl md:text-7xl">
+                Build.<br />
+                <span className="text-[var(--bauhaus-yellow)]">Ship.</span>{" "}
+                <span className="text-[var(--bauhaus-blue)]">Repeat.</span>
+              </h1>
+              <p className="mt-6 max-w-md text-base text-muted-foreground">
+                I'm <span className="text-foreground">Milo Reyes</span> — CS student at TU Berlin
+                and freelance developer. I design and code interfaces that are honest, fast, and built to last.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* MARQUEE STATS */}
-      <section className="border-b-2 border-foreground bg-foreground text-background">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 divide-foreground md:grid-cols-4 md:divide-x-2">
+          {/* AVATAR / IDENTITY */}
+          <div className="glass relative col-span-3 row-span-2 overflow-hidden rounded-3xl p-6 md:col-span-2">
+            <div className="pointer-events-none absolute inset-0">
+              <div className="absolute -left-6 -top-6 h-32 w-32 rounded-full bg-[var(--bauhaus-blue)] opacity-80" />
+              <div className="absolute right-4 top-4 h-10 w-10 bg-[var(--bauhaus-red)]" />
+              <div className="absolute bottom-6 right-6 h-14 w-14 rotate-45 bg-[var(--bauhaus-yellow)] opacity-90" />
+            </div>
+            <div className="relative flex h-full flex-col justify-between">
+              <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">/ Portrait</div>
+              <div>
+                <div className="font-display text-2xl uppercase">Milo Reyes</div>
+                <div className="mt-1 font-mono text-xs text-muted-foreground">Berlin · 21 y/o</div>
+              </div>
+            </div>
+          </div>
+
+          {/* QUICK STATS */}
+          <div className="glass col-span-3 rounded-3xl p-5 md:col-span-2">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">/ Shipped</div>
+            <div className="mt-3 font-display text-5xl">27</div>
+            <div className="mt-1 text-xs text-muted-foreground">projects, clients + open source</div>
+          </div>
+          <div className="glass col-span-3 rounded-3xl bg-[var(--bauhaus-yellow)]/20 p-5 md:col-span-2">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">/ GPA</div>
+            <div className="mt-3 font-display text-5xl">3.9</div>
+            <div className="mt-1 text-xs text-muted-foreground">CS · TU Berlin · 3rd year</div>
+          </div>
+
+          {/* CTA */}
+          <a
+            href="#contact"
+            className="glass group col-span-6 flex items-center justify-between rounded-3xl p-6 hover:bg-white/10 md:col-span-2"
+          >
+            <div>
+              <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Start a project</div>
+              <div className="mt-2 font-display text-xl uppercase">Let's talk →</div>
+            </div>
+            <ArrowUpRight className="h-8 w-8 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+          </a>
+
+          {/* ABOUT */}
+          <div id="about" className="glass col-span-6 rounded-3xl p-8 md:col-span-4">
+            <div className="mb-4 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">/ 01 — About</div>
+            <p className="text-xl leading-relaxed md:text-2xl">
+              I care about <span className="text-[var(--bauhaus-yellow)]">type systems</span>,
+              interface honesty, and shipping things that actually{" "}
+              <span className="text-[var(--bauhaus-red)]">solve someone's problem</span>.
+              Form follows function — always.
+            </p>
+          </div>
+          <div className="glass col-span-6 flex flex-col justify-between rounded-3xl bg-[var(--bauhaus-blue)]/25 p-6 md:col-span-2">
+            <Sparkles className="h-8 w-8 text-[var(--bauhaus-yellow)]" />
+            <div>
+              <div className="font-display text-3xl uppercase">04+ yrs</div>
+              <div className="mt-1 text-xs text-muted-foreground">writing production code</div>
+            </div>
+          </div>
+
+          {/* WORK SECTION HEADER */}
+          <div id="work" className="col-span-6 mt-8 flex items-end justify-between">
+            <div>
+              <div className="mb-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">/ 02 — Selected work</div>
+              <h2 className="text-4xl uppercase md:text-5xl">Projects</h2>
+            </div>
+            <div className="hidden font-mono text-xs text-muted-foreground sm:block">
+              04 of 27 →
+            </div>
+          </div>
+
+          {/* PROJECTS BENTO */}
+          <a href="#" className="glass group relative col-span-6 overflow-hidden rounded-3xl p-6 md:col-span-4 md:row-span-2 md:p-8">
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[var(--bauhaus-red)]/60 to-transparent" />
+            <div className="pointer-events-none absolute -right-10 -top-10 h-48 w-48 rounded-full bg-[var(--bauhaus-red)] opacity-70" />
+            <div className="pointer-events-none absolute right-16 bottom-10 h-12 w-12 bg-[var(--bauhaus-yellow)]" />
+            <div className="relative flex h-full min-h-[280px] flex-col justify-between">
+              <div className="flex items-start justify-between">
+                <span className="font-mono text-xs uppercase tracking-widest">01 / Fintech · 2026</span>
+                <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+              </div>
+              <div>
+                <h3 className="text-4xl uppercase md:text-5xl">Ledger.io</h3>
+                <p className="mt-3 max-w-md text-sm text-muted-foreground">
+                  Minimal double-entry bookkeeping for freelancers. TypeScript, Postgres, and a lot of coffee.
+                </p>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" className="glass group relative overflow-hidden rounded-3xl p-6 col-span-6 md:col-span-2">
+            <div className="pointer-events-none absolute -bottom-6 -right-6 h-28 w-28 rounded-full bg-[var(--bauhaus-blue)] opacity-80" />
+            <div className="relative flex h-full flex-col justify-between">
+              <span className="font-mono text-xs uppercase tracking-widest">02 / Site · 26</span>
+              <div>
+                <h3 className="text-2xl uppercase">Studio Kova</h3>
+                <p className="mt-2 text-xs text-muted-foreground">Editorial one-pager for Berlin architects.</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" className="glass group relative overflow-hidden rounded-3xl bg-[var(--bauhaus-yellow)]/25 p-6 col-span-6 md:col-span-2">
+            <div className="pointer-events-none absolute -top-4 -right-4 h-24 w-24 rotate-45 bg-[var(--bauhaus-yellow)] opacity-80" />
+            <div className="relative flex h-full flex-col justify-between">
+              <span className="font-mono text-xs uppercase tracking-widest">03 / IoT · 25</span>
+              <div>
+                <h3 className="text-2xl uppercase">Pulse Meter</h3>
+                <p className="mt-2 text-xs text-muted-foreground">Realtime lab dashboard. Capstone, grade 1.0.</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="#" className="glass group relative col-span-6 overflow-hidden rounded-3xl p-6 md:col-span-3">
+            <div className="pointer-events-none absolute -left-8 -bottom-8 h-40 w-40 rounded-full bg-[var(--bauhaus-blue)] opacity-70" />
+            <div className="relative flex items-center justify-between">
+              <div>
+                <span className="font-mono text-xs uppercase tracking-widest">04 / Open source · 25</span>
+                <h3 className="mt-3 text-3xl uppercase">Formkit</h3>
+                <p className="mt-2 text-xs text-muted-foreground">
+                  Tiny React form primitives. 1.2k stars · 40k weekly downloads.
+                </p>
+              </div>
+              <Github className="h-8 w-8 opacity-70" />
+            </div>
+          </a>
+
+          <a href="#" className="glass group relative col-span-6 overflow-hidden rounded-3xl bg-[var(--bauhaus-red)]/25 p-6 md:col-span-3">
+            <div className="pointer-events-none absolute right-4 top-4 h-10 w-10 rounded-full bg-[var(--bauhaus-yellow)]" />
+            <div className="relative">
+              <span className="font-mono text-xs uppercase tracking-widest">/ View archive</span>
+              <h3 className="mt-3 text-3xl uppercase">23 more →</h3>
+              <p className="mt-2 text-xs text-muted-foreground">Coursework, experiments, client micro-sites.</p>
+            </div>
+          </a>
+
+          {/* SERVICES / STACK */}
+          <div id="stack" className="col-span-6 mt-8">
+            <div className="mb-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">/ 03 — Services & stack</div>
+            <h2 className="text-4xl uppercase md:text-5xl">Three things, done well.</h2>
+          </div>
+
           {[
-            ["04+", "Years coding"],
-            ["27", "Projects shipped"],
-            ["12", "Happy clients"],
-            ["3.9", "GPA / TU Berlin"],
-          ].map(([k, v]) => (
-            <div key={v} className="border-t-2 border-foreground px-6 py-8 md:border-t-0">
-              <div className="font-display text-5xl md:text-6xl">{k}</div>
-              <div className="mt-2 font-mono text-xs uppercase tracking-widest opacity-70">{v}</div>
+            { icon: Code2, title: "App", copy: "Full-stack React + TypeScript apps. Auth, payments, dashboards.", tint: "bg-[var(--bauhaus-red)]/25" },
+            { icon: Rocket, title: "Web", copy: "Landing pages, marketing sites, custom CMS integrations.", tint: "bg-[var(--bauhaus-blue)]/25" },
+            { icon: Palette, title: "Design", copy: "UI systems, wireframes, brand-aligned interfaces.", tint: "bg-[var(--bauhaus-yellow)]/25" },
+          ].map((s) => (
+            <div key={s.title} className={`glass col-span-6 rounded-3xl p-6 md:col-span-2 ${s.tint}`}>
+              <s.icon className="h-8 w-8" />
+              <h3 className="mt-6 text-3xl uppercase">{s.title}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{s.copy}</p>
             </div>
           ))}
-        </div>
-      </section>
 
-      {/* WORK */}
-      <section id="work" className="border-b-2 border-foreground">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-8 md:py-32">
-          <div className="mb-16 flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <div className="mb-4 font-mono text-xs uppercase tracking-widest">/ 01 — Selected work</div>
-              <h2 className="text-5xl uppercase md:text-7xl">Projects</h2>
-            </div>
-            <p className="max-w-sm text-sm text-muted-foreground">
-              A slice of client work, coursework, and open source. All built end-to-end.
-            </p>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2">
-            {projects.map((p) => (
-              <article
-                key={p.n}
-                className="group border-2 border-foreground bg-card hard-shadow transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
-              >
-                <div className={`relative flex h-56 items-end justify-between overflow-hidden border-b-2 border-foreground p-6 ${p.color}`}>
-                  <span className="font-display text-7xl leading-none">{p.n}</span>
-                  {/* geometric flair per card */}
-                  <div className="absolute right-6 top-6 h-16 w-16 rounded-full border-2 border-current opacity-60" />
-                  <div className="absolute right-16 top-16 h-8 w-8 bg-current opacity-30" />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center justify-between font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                    <span>{p.tag}</span>
-                    <span>{p.year}</span>
-                  </div>
-                  <h3 className="mt-3 text-3xl uppercase">{p.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ABOUT */}
-      <section id="about" className="border-b-2 border-foreground bg-[var(--bauhaus-cream)]">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-8 md:grid-cols-12 md:py-32">
-          <div className="md:col-span-4">
-            <div className="mb-4 font-mono text-xs uppercase tracking-widest">/ 02 — About</div>
-            <h2 className="text-5xl uppercase md:text-6xl">
-              Form
-              <br />
-              follows
-              <br />
-              <span className="text-[var(--bauhaus-red)]">function.</span>
-            </h2>
-            <div className="mt-8 flex items-center gap-4">
-              <div className="h-16 w-16 rounded-full bg-[var(--bauhaus-blue)]" />
-              <div className="h-16 w-16 bg-[var(--bauhaus-yellow)]" />
-              <div className="h-16 w-16" style={{ clipPath: "polygon(50% 0, 100% 100%, 0 100%)", background: "var(--bauhaus-red)" }} />
-            </div>
-          </div>
-          <div className="md:col-span-8">
-            <p className="text-xl leading-relaxed md:text-2xl">
-              I'm a third-year CS student who freelances on the side. I care about type systems,
-              interface honesty, and shipping things that actually solve someone's problem.
-            </p>
-            <div className="mt-10 grid gap-8 sm:grid-cols-2">
-              <div>
-                <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Currently</h4>
-                <ul className="mt-3 space-y-2 text-sm">
-                  <li>→ BSc Computer Science, TU Berlin</li>
-                  <li>→ Freelancing part-time</li>
-                  <li>→ Open source on GitHub</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Stack</h4>
-                <ul className="mt-3 space-y-2 text-sm">
-                  <li>→ TypeScript, React, Node</li>
-                  <li>→ Postgres, Redis, Docker</li>
-                  <li>→ Figma, Rust (learning)</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section id="services" className="border-b-2 border-foreground">
-        <div className="mx-auto max-w-7xl px-4 py-20 sm:px-8 md:py-32">
-          <div className="mb-16">
-            <div className="mb-4 font-mono text-xs uppercase tracking-widest">/ 03 — Services</div>
-            <h2 className="max-w-3xl text-5xl uppercase md:text-7xl">
-              Three things,<br /> done well.
-            </h2>
-          </div>
-          <div className="grid gap-0 border-2 border-foreground md:grid-cols-3">
-            {services.map((s, i) => (
-              <div
-                key={s.k}
-                className={`p-8 md:p-10 ${i < 2 ? "border-b-2 border-foreground md:border-b-0 md:border-r-2" : ""} ${
-                  i === 0 ? "bg-[var(--bauhaus-red)] text-primary-foreground" :
-                  i === 1 ? "bg-[var(--bauhaus-blue)] text-primary-foreground" :
-                  "bg-[var(--bauhaus-yellow)] text-foreground"
-                }`}
-              >
-                <div className="mb-8 font-mono text-xs uppercase tracking-widest opacity-70">0{i + 1}</div>
-                <h3 className="text-4xl uppercase md:text-5xl">{s.k}</h3>
-                <p className="mt-6 text-sm leading-relaxed">{s.v}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CONTACT */}
-      <section id="contact" className="relative overflow-hidden border-b-2 border-foreground bg-foreground text-background">
-        <div className="pointer-events-none absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-[var(--bauhaus-blue)] opacity-90" />
-        <div className="pointer-events-none absolute right-10 top-10 hidden h-32 w-32 rotate-45 bg-[var(--bauhaus-yellow)] md:block" />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-24 sm:px-8 md:grid-cols-2 md:py-40">
-          <div>
-            <div className="mb-4 font-mono text-xs uppercase tracking-widest opacity-70">/ 04 — Contact</div>
-            <h2 className="text-6xl uppercase leading-[0.9] md:text-8xl">
-              Let's<br />
-              <span className="text-[var(--bauhaus-yellow)]">build</span><br />
-              something.
-            </h2>
-          </div>
-          <div className="flex flex-col justify-end gap-6">
-            <a
-              href="mailto:hello@miloreyes.dev"
-              className="group flex items-center justify-between border-2 border-background bg-transparent px-6 py-6 text-lg font-bold uppercase transition-colors hover:bg-[var(--bauhaus-red)]"
-            >
-              hello@miloreyes.dev
-              <span className="text-2xl">→</span>
-            </a>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {[
-                ["GitHub", "@miloreyes"],
-                ["LinkedIn", "in/miloreyes"],
-                ["Read.cv", "milo"],
-              ].map(([k, v]) => (
-                <a
-                  key={k}
-                  href="#"
-                  className="border-2 border-background px-4 py-4 transition-colors hover:bg-[var(--bauhaus-yellow)] hover:text-foreground"
-                >
-                  <div className="font-mono text-xs uppercase tracking-widest opacity-70">{k}</div>
-                  <div className="mt-1 font-bold">{v}</div>
-                </a>
+          <div className="glass col-span-6 rounded-3xl p-6 md:col-span-4">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">/ Toolbox</div>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {["TypeScript", "React", "Node", "Postgres", "Redis", "Docker", "Figma", "Rust (learning)", "TanStack", "Tailwind"].map((t) => (
+                <span key={t} className="rounded-full border border-white/20 bg-white/5 px-3 py-1.5 font-mono text-xs">
+                  {t}
+                </span>
               ))}
             </div>
-            <p className="font-mono text-xs uppercase tracking-widest opacity-60">
-              Currently booking projects for Q3 2026 →
-            </p>
+          </div>
+          <div className="glass col-span-6 rounded-3xl bg-[var(--bauhaus-blue)]/25 p-6 md:col-span-2">
+            <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">/ Now</div>
+            <ul className="mt-3 space-y-2 text-sm">
+              <li>→ BSc CS, TU Berlin</li>
+              <li>→ Freelancing part-time</li>
+              <li>→ Shipping open source</li>
+            </ul>
+          </div>
+
+          {/* CONTACT */}
+          <div id="contact" className="glass-strong relative col-span-6 overflow-hidden rounded-3xl p-8 md:p-12">
+            <div className="pointer-events-none absolute -left-16 -bottom-16 h-64 w-64 rounded-full bg-[var(--bauhaus-blue)] opacity-80" />
+            <div className="pointer-events-none absolute right-10 top-10 hidden h-24 w-24 rotate-45 bg-[var(--bauhaus-yellow)] opacity-90 md:block" />
+            <div className="pointer-events-none absolute right-40 bottom-6 hidden h-16 w-16 rounded-full bg-[var(--bauhaus-red)] md:block" />
+            <div className="relative grid gap-8 md:grid-cols-2">
+              <div>
+                <div className="mb-4 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">/ 04 — Contact</div>
+                <h2 className="text-5xl uppercase leading-[0.9] md:text-6xl">
+                  Let's<br />
+                  <span className="text-[var(--bauhaus-yellow)]">build</span><br />
+                  something.
+                </h2>
+              </div>
+              <div className="flex flex-col justify-end gap-3">
+                <a href="mailto:hello@miloreyes.dev" className="glass group flex items-center justify-between rounded-2xl p-5 hover:bg-white/10">
+                  <div className="flex items-center gap-3">
+                    <Mail className="h-5 w-5" />
+                    <span className="font-medium">hello@miloreyes.dev</span>
+                  </div>
+                  <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                </a>
+                <div className="grid grid-cols-2 gap-3">
+                  <a href="#" className="glass flex items-center gap-3 rounded-2xl p-4 hover:bg-white/10">
+                    <Github className="h-5 w-5" />
+                    <div>
+                      <div className="font-mono text-[10px] uppercase text-muted-foreground">GitHub</div>
+                      <div className="text-sm font-semibold">@miloreyes</div>
+                    </div>
+                  </a>
+                  <a href="#" className="glass flex items-center gap-3 rounded-2xl p-4 hover:bg-white/10">
+                    <Linkedin className="h-5 w-5" />
+                    <div>
+                      <div className="font-mono text-[10px] uppercase text-muted-foreground">LinkedIn</div>
+                      <div className="text-sm font-semibold">in/miloreyes</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
 
-      {/* FOOTER */}
-      <footer className="bg-background">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-8 font-mono text-xs uppercase tracking-widest sm:px-8">
+        {/* FOOTER */}
+        <footer className="mx-auto mt-10 flex flex-wrap items-center justify-between gap-4 px-2 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
           <div>© 2026 Milo Reyes / Berlin</div>
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-[var(--bauhaus-red)]" />
@@ -299,8 +289,8 @@ function Index() {
             <span className="h-3 w-3 rotate-45 bg-[var(--bauhaus-yellow)]" />
           </div>
           <div>Designed & coded in-house.</div>
-        </div>
-      </footer>
+        </footer>
+      </section>
     </main>
   );
 }
